@@ -2,20 +2,27 @@ const Discord = require('discord.js');
 
 const client = new Discord.Client({partials:["MESSAGE", "CHANNEL", "REACTION"]});
 
-const { CanvasSenpai } = require("canvas-senpai")
+//const { CanvasSenpai } = require("canvas-senpai")
 
-const canva = new CanvasSenpai();
+/*const canva = new CanvasSenpai();
 
-const canvacord = require("canvacord")
+//const canvacord = require("canvacord")
 
+//const {Database} = require("xen.db");
+//const db = new Database("Database/json.sqlite",{path:"Database", table: "JSON", useWalMode: false})*/
 client.commands = new Discord.Collection();
 client.events = new Discord.Collection();
 
 ['command_handler', 'event_handler', 'premium_commands_handler'].forEach(handler=>{
     require(`./handlers/${handler}`)(client, Discord);
 })
+/*client.once('ready', (db) => {
+   /* console.log('dikscorps bot is online');
+    client.user.setActivity('Waiting outside your house with omni! Created by Arjav and Raj for DikCorps');
 
+    if(db.fetch("Premium")===null) db.set("Premium", []);
 
+});
 /*client.on('guildMemberAdd', async member =>{
     //copy your server ID
     if(member.guild.id !== "863002027981799444") return; 
